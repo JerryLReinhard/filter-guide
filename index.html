@@ -1,0 +1,66 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#00305B">
+<title>Dispenser Filter Guide · Clean Fuels National</title>
+<style>
+*{box-sizing:border-box} html,body{margin:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:#f2f6fb;color:#14213d;-webkit-tap-highlight-color:transparent}
+header{background:#fff;padding:14px 16px 10px;text-align:center;border-bottom:5px solid #00305B}
+header img{height:64px}
+header h1{margin:6px 0 0;font-size:22px;color:#00305B}
+header p{margin:2px 0 0;font-size:13px;color:#1452A4;font-weight:600}
+main{max-width:560px;margin:0 auto;padding:14px 14px 28px}
+.rule{background:#00305B;color:#fff;border-radius:14px;padding:12px 14px;font-size:15px;font-weight:600;margin-bottom:14px}
+.rule b{background:#BEE5FB;color:#00305B;border-radius:6px;padding:1px 7px;margin-right:6px;font-size:12px}
+h2{font-size:13px;letter-spacing:1px;text-transform:uppercase;color:#5b6b82;margin:16px 4px 8px}
+.grid{display:grid;gap:10px}
+button.f{all:unset;display:flex;align-items:center;gap:12px;min-height:64px;padding:12px 14px;background:#fff;border-radius:14px;box-shadow:0 1px 3px rgba(0,48,91,.12);border-left:10px solid var(--c);cursor:pointer}
+button.f .t{font-size:18px;font-weight:800;line-height:1.15} button.f .s{font-size:13px;color:#5b6b82}
+button.f .go{margin-left:auto;font-size:26px;color:var(--c)}
+button.f:active{transform:scale(.98)}
+#res{display:none}
+.card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 2px 10px rgba(0,48,91,.15)}
+.card .hd{background:var(--c);color:#fff;padding:16px}
+.card .hd .t{font-size:22px;font-weight:800} .card .hd .s{font-size:14px;opacity:.9}
+.blk{padding:14px 16px;border-bottom:1px solid #e6edf5}
+.lbl{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:#5b6b82;font-weight:700}
+.pn{font-size:40px;font-weight:900;color:#00305B;line-height:1.1}
+.pd{font-size:15px;color:#3d4b63}
+.bk .pn{font-size:30px}
+.none{font-size:18px;font-weight:800;color:#C62828;margin-top:4px}
+.cau{display:flex;gap:10px;padding:14px 16px;background:#fff8e6;font-size:16px;line-height:1.35}
+.cau i{font-style:normal;font-size:20px}
+.back{all:unset;display:block;text-align:center;margin:14px 0 0;padding:16px;border-radius:14px;background:#00305B;color:#fff;font-weight:800;font-size:17px;cursor:pointer}
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:14px;overflow:hidden;font-size:14px}
+td,th{padding:9px 10px;text-align:left;border-bottom:1px solid #e6edf5} th{font-size:12px;color:#5b6b82;text-transform:uppercase}
+td b{color:#00305B}
+footer{text-align:center;font-size:12px;color:#6b7a90;margin-top:18px}
+</style></head><body>
+<header><img src="logo.png" alt="Clean Fuels National"><h1>Dispenser Filter Guide</h1><p>Tap the fuel product</p></header>
+<main>
+<div class="rule"><b>ALWAYS</b>Date every filter MM/DD/YY, followed by your tech code or name.</div>
+<div id="pick"><h2>What fuel is this dispenser pumping?</h2><div class="grid" id="grid"></div>
+<h2>All filters on the truck</h2><table id="tbl"><tr><th>Part #</th><th>Model</th><th>Micron</th></tr></table></div>
+<div id="res"></div>
+<footer>Not sure of the fuel? Call in before installing.<br>Clean Fuels National · Rev. Nov 2026</footer>
+</main>
+<script>
+const F=[{"k": "e10", "label": "E10 Gasoline", "sub": "Ethanol-blended gas", "color": "#2E7D32", "use": "70120", "backup": "70032", "caution": "Backup can is taller. If it won't fit, use 70016."}, {"k": "phase", "label": "Gas after Phase Separation / Water", "sub": "JR's field rule", "color": "#C62828", "use": "70060", "backup": "70065", "caution": "Water-only filter. Install only after the tank is cleaned and the fuel tests dry."}, {"k": "neat", "label": "Neat Gasoline", "sub": "Non-ethanol (E0)", "color": "#00838F", "use": "70060", "backup": "70120", "caution": "Only on true non-ethanol fuel."}, {"k": "ulsd", "label": "ULSD and K-1", "sub": "Diesel & kerosene", "color": "#E0A100", "use": "70060", "backup": "70065", "caution": "Biodiesel over B5: use 70032."}, {"k": "hf", "label": "High Flow ULSD", "sub": "Truck stops / 40 GPM", "color": "#E65100", "use": "70074", "backup": "70020", "caution": "In states that allow 144 micron, 70080 (800WM-144) is preferred \u2014 customers welcome it."}, {"k": "flex", "label": "Flex Fuel (E51+ / E85)", "sub": "High ethanol", "color": "#6A1B9A", "use": "70991", "backup": null, "caution": "Never put any other filter on flex fuel."}, {"k": "race", "label": "Race Fuels", "sub": "Off-road high octane", "color": "#37474F", "use": "70991", "backup": "70060", "caution": "Use the backup only if the fuel is confirmed non-ethanol."}],P={"70016": {"model": "400-30", "media": "Cellulose", "micron": "30"}, "70020": {"model": "800-30", "media": "Cellulose", "micron": "30"}, "70024": {"model": "800HG-10", "media": "Hydroglass", "micron": "10"}, "70032": {"model": "450MG-10", "media": "Microglass", "micron": "10"}, "70060": {"model": "400HS-10", "media": "Hydrosorb", "micron": "10"}, "70065": {"model": "400HS-30", "media": "Hydrosorb", "micron": "30"}, "70074": {"model": "800MG-30", "media": "Microglass", "micron": "30"}, "70080": {"model": "800WM-144", "media": "Wire mesh", "micron": "144"}, "70120": {"model": "400MB-10", "media": "Multi-Fuel", "micron": "10"}, "70991": {"model": "400HA-05", "media": "E85 Microglass", "micron": "5"}},NB="No backup on truck \u2014 call in";
+const $=s=>document.querySelector(s),esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const g=$('#grid');
+F.forEach(f=>{const b=document.createElement('button');b.className='f';b.style.setProperty('--c',f.color);
+b.innerHTML=`<div><div class="t">${esc(f.label)}</div><div class="s">${esc(f.sub)}</div></div><span class="go">›</span>`;
+b.onclick=()=>show(f.k);g.appendChild(b);});
+Object.entries(P).forEach(([pn,p])=>{$('#tbl').insertAdjacentHTML('beforeend',`<tr><td><b>${pn}</b></td><td>${p.model} · ${p.media}</td><td>${p.micron} µ</td></tr>`)});
+function pd(pn){const p=P[pn];return `${p.model} · ${p.media} · ${p.micron} µ`}
+function show(k){const f=F.find(x=>x.k===k);if(!f)return;
+$('#res').innerHTML=`<div class="card" style="--c:${f.color}"><div class="hd"><div class="t">${esc(f.label)}</div><div class="s">${esc(f.sub)}</div></div>
+<div class="blk"><div class="lbl">Use</div><div class="pn">${f.use}</div><div class="pd">${pd(f.use)}</div></div>
+<div class="blk bk"><div class="lbl">Backup</div>${f.backup?`<div class="pn">${f.backup}</div><div class="pd">${pd(f.backup)}</div>`:`<div class="none">${esc(NB)}</div>`}</div>
+<div class="cau"><i>⚠️</i><div>${esc(f.caution)}</div></div></div>
+<button class="back" onclick="location.hash=''">‹ Pick another fuel</button>`;
+$('#pick').style.display='none';$('#res').style.display='block';window.scrollTo(0,0);}
+function route(){const k=location.hash.slice(1);if(k&&F.some(f=>f.k===k))show(k);else{$('#res').style.display='none';$('#pick').style.display='block';}}
+g.querySelectorAll('button').forEach((b,i)=>b.onclick=()=>{location.hash=F[i].k});
+window.addEventListener('hashchange',route);route();
+</script></body></html>
